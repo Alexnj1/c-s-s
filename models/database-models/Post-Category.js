@@ -1,6 +1,26 @@
-const {Model, DataTypes} = require('sequelize')
-const sequelize = require('../database-connection/connection')
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../database-connection/connection");
 
 class PostCategory extends Model {}
 
-module.exports = PostCategory
+PostCategory.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "post_category",
+  }
+);
+
+module.exports = PostCategory;
