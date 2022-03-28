@@ -10,6 +10,10 @@ Post.init(
       autoIncrement: true,
       type: DataTypes.INTEGER,
     },
+    post_title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     post_content: {
       type: DataTypes.STRING,
       allowNull: false,
