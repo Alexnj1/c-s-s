@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../database-connection/connection");
 
-class AdminPost extends Model {}
+class Post extends Model {}
 
-AdminPost.init(
+Post.init(
   {
     id: {
       primaryKey: true,
@@ -14,9 +14,17 @@ AdminPost.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
     admin_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "admin",
         key: "id",
@@ -26,7 +34,7 @@ AdminPost.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "post category",
+        model: "post_category",
         key: "id",
       },
     },
@@ -34,9 +42,18 @@ AdminPost.init(
   {
     sequelize,
     freezeTableName: true,
-    modelName: "admin_post",
+    modelName: "post",
     underscored: true,
+    validate: {
+      userOrAdmin() {
+        if (this.user_id && this.admin_id) {
+          throw new Error("Cannot have both admin and user ids!");
+        } else if (!this.user_id && !this.admin_id) {
+          throw new Error("Must have either admin.id or user.id!");
+        }
+      },
+    },
   }
 );
 
-module.exports = AdminPost;
+module.exports = Post;

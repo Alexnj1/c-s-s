@@ -1,48 +1,57 @@
 const User = require("./database-models/User");
-const UserPost = require("./database-models/User-Post");
+const Post = require("./database-models/Post");
 const PostCategory = require("./database-models/Post-Category");
-const UserComment = require("./database-models/User-Comments");
-const AdminComment = require("./database-models/Admin-Comments");
+const Comment = require("./database-models/Comments");
 const Admin = require("./database-models/Admin");
-const AdminPost = require("./database-models/Admin-Post");
 
 //========= HAS MANY ==========
-User.hasMany(UserPost, {
+User.hasMany(Post, {
   foreignKey: "user_id",
+  onDelete: 'CASCADE'
 });
 
-User.hasMany(UserComment, {
+User.hasMany(Comment, {
   foreignKey: 'user_id'
 })
 
-Admin.hasMany(AdminPost, {
+Admin.hasMany(Post, {
   foreignKey: "admin_id",
 });
 
-Admin.hasMany(AdminComment, {
+Admin.hasMany(Comment, {
   foreignKey: 'admin_id'
 })
 
-AdminPost.hasMany
-
-PostCategory.hasMany(UserPost, {
-  foreignKey: 'post_category_id'
-})
-
-PostCategory.hasMany(AdminPost, {
+PostCategory.hasMany(Post, {
   foreignKey: 'post_category_id'
 })
 
 //========= BELONGS TO =========
 
+Post.belongsTo(User, {
+  foreignKey: 'user_id',
+})
 
+Post.belongsTo(Admin, {
+  foreignKey: 'admin_id'
+})
+
+Post.belongsTo(PostCategory, {
+  foreignKey: 'post_category_id'
+})
+
+Comment.belongsTo(User, {
+  foreignKey: 'user_id'
+})
+
+Comment.belongsTo(Admin, {
+  foreignKey: 'admin_id'
+})
 
 module.exports = {
   User,
-  UserPost,
+  Post,
   PostCategory,
-  UserComment,
-  AdminComment,
+  Comment,
   Admin,
-  AdminPost,
 };
