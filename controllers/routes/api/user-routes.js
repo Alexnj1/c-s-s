@@ -6,9 +6,9 @@ const { Admin, Comment, PostCategory, Post, User } = require('../../models');
 const withAuth = require('../../utilities/auth')
 
 
-// get all admins
+// get all users
 router.get('/', (req, res) => {
-    Admin.findAll({
+    User.findAll({
         attributes: { exclude: ['password'] }
     })
         .then(data => res.json(data))
@@ -20,24 +20,19 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/', (req, res) => {
 
 
 
-})
-
-
-
-// get one admin
+// get one user
 router.get('/:id', (req, res) => {
 
-    Admin.findOne({
+    User.findOne({
         attributes: { exclude: ['password'] },
         where: { id: req.params.id },
         include: [
             {
                 model: Post,
-                attributes: ['post_title', 'post_content', 'admin_id', 'created_at']
+                attributes: ['post_title', 'post_content', 'user_id', 'created_at']
             },
             {
                 model: Comment,
@@ -141,3 +136,9 @@ router.post('/logout', (req,res) => {
 
 
 })
+
+// router.get('/', (req, res) => {
+
+
+
+// })
