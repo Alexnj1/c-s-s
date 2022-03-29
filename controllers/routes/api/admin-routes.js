@@ -60,8 +60,18 @@ router.get('/:id', (req,res) => {
 
 
 router.post('/', (req,res) => {
-    Admin.create()
-
+    Admin.create({
+        name: req.body.name,
+        position: req.body.position,
+        email: req.body.email,
+    })
+    .then(data => res.json(data))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 
 })
+
+
 
