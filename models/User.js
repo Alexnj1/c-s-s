@@ -30,6 +30,8 @@ User.init(
       unique:true,
       validate: {
         isEmail: true,
+        contains: '@luxury.com',
+        notContains: '@luxuryadmin.com'
       },
     },
     password: {
