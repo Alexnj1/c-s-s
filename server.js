@@ -1,11 +1,24 @@
 // IMPORT NECESSARY DEPENDENCIES
 const express = require("express");
-const sequelize = require("./models/database-connection/connection");
+const sequelize = require("./models/db/connection");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const routes = require('./controllers/home-routes'); //ADD ROUTES IMPORT
-const helpers = ''; //ADD HELPERS IMPORT IF NEEDED
+const routes = ""; //ADD ROUTES IMPORT
+const helpers = ""; //ADD HELPERS IMPORT IF NEEDED
+const {
+  User,
+  Post,
+  PostCategory,
+  Comment,
+  Admin,
+} = require("./models/relationships");
+
+User;
+Post;
+PostCategory;
+Comment;
+Admin;
 
 // INITIALIZE EXPRESS
 const app = express();

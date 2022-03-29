@@ -1,36 +1,39 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../database-connection/connection");
+const sequelize = require("./db/connection");
 
-class User extends Model {}
+class Admin extends Model {}
 
-User.init(
+Admin.init(
   {
     id: {
       primaryKey: true,
       autoIncrement: true,
       type: DataTypes.INTEGER,
     },
-    household_username: {
+    name: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    house_number: {
-      type: DataTypes.INTEGER,
+    position: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique:true,
       validate: {
         isEmail: true,
+        contains: '@luxuryadmin.com',
+        notContains: '@luxury.com'
       },
     },
   },
   {
     sequelize,
     freezeTableName: true,
-    modelName: "user",
+    modelName: "admin",
   }
 );
 
-module.exports = User;
+module.exports = Admin;

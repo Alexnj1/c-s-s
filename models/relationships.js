@@ -1,8 +1,8 @@
-const User = require("./database-models/User");
-const Post = require("./database-models/Post");
-const PostCategory = require("./database-models/Post-Category");
-const Comment = require("./database-models/Comments");
-const Admin = require("./database-models/Admin");
+const User = require("./User");
+const Post = require("./Post");
+const PostCategory = require("./Post-Category");
+const Comment = require("./Comments");
+const Admin = require("./Admin");
 
 //========= HAS MANY ==========
 User.hasMany(Post, {

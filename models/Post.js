@@ -1,17 +1,20 @@
-// const { error } = require("console");
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../database-connection/connection");
+const sequelize = require("./db/connection");
 
-class Comment extends Model {}
+class Post extends Model {}
 
-Comment.init(
+Post.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
     },
-    comment_content: {
+    post_title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    post_content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,11 +34,11 @@ Comment.init(
         key: "id",
       },
     },
-    post_id: {
+    post_category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "post",
+        model: "post_category",
         key: "id",
       },
     },
@@ -43,8 +46,8 @@ Comment.init(
   {
     sequelize,
     freezeTableName: true,
+    modelName: "post",
     underscored: true,
-    modelName: "comment",
     validate: {
       userOrAdmin() {
         if (this.user_id && this.admin_id) {
@@ -57,4 +60,4 @@ Comment.init(
   }
 );
 
-module.exports = Comment;
+module.exports = Post;
