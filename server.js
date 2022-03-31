@@ -58,7 +58,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // will already be looking in public folder, dont reference public in handlebars
 app.use(session(sess));
-app.use(routes); // this will be used for routes
+//app.use(routes); // this will be used for routes
 
 // ENABLE CONNECTION
 sequelize.sync({ force: false }).then(() => {

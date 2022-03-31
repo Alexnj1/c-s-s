@@ -141,5 +141,5 @@ async function testSeeds() {
 
 // RUN SEED OR TEST SEED SEPARATELY
 
-// seedDatabase();
-testSeeds();
+seedDatabase();
+//testSeeds();
