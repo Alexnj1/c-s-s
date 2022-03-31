@@ -1,9 +1,9 @@
 const res = require('express/lib/response');
-const PostCategory = require('../../../models/Post-Category');
+//const PostCategory = require('../../../models/Post-Category');
 
 const router = require('express').Router();
-const { Admin, Comment, PostCategory, Post, User } = require('../../models');
-const withAuth = require('../../utilities/auth')
+const {Admin, Comment, PostCategory, Post, User} = require('../../../models/relationships');
+//const withAuth = require('../../utilities/auth')
 
 
 // get all users
@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
         });
 
 })
-
 
 
 
@@ -40,8 +39,13 @@ router.get('/:id', (req, res) => {
                 include: [{
                     model: Post,
                     attributes: ['title']
+                },
+                {
+                    model: Admin,
+                    attributes: ['admin_id']
                 }]
             }]
+           
     })
 
         .then(data => {
@@ -57,17 +61,18 @@ router.get('/:id', (req, res) => {
         });
 })
 
-// create an admin
+// create an user
 router.post('/', (req, res) => {
-    Admin.create({
-        name: req.body.name,
-        position: req.body.position,
+    user.create({
+        household_username: req.body.household_username,
         email: req.body.email,
+        house_number: req.body.house_number,
+
     })
         .then(data => {
             req.sesssion.save(() => {
+                req.session.household_username = data.household_username;
                 req.session.email = data.email;
-                req.session.user_id = data.id;
                 req.session.logged_in = true
                 res.json(data)
 
@@ -81,15 +86,15 @@ router.post('/', (req, res) => {
 })
 
 
-// admin log in
+// user log in
 router.post('/login', (req, res) => {
 
-    Admin.findOne({
+    User.findOne({
         where: { email: req.body.email }
     })
         .then(data => {
             if (!data) {
-                res.status(400).json({ message: 'This admin does not exist!' })
+                res.status(400).json({ message: 'This User does not exist!' })
                 return;
             }
 
@@ -109,17 +114,24 @@ router.post('/login', (req, res) => {
 })
 
 
-// delete admin
+// logout route
+router.post('/logout', (req,res) => {
+
+
+})
+
+
+// DELETE USER
 
 router.delete ('/:id',(req,res) =>{
 
-    Admin.destroy({
+    User.destroy({
 
     where: {id: req.params.id}
 })
 .then(data => {
     if(!data){
-        res.status(400).json({ message: 'This admin does not exist!' })
+        res.status(400).json({ message: 'This User does not exist!' })
         return
     }
     res.json(data)
@@ -131,14 +143,6 @@ router.delete ('/:id',(req,res) =>{
 
 })
 
-// logout route
-router.post('/logout', (req,res) => {
 
+module.exports = router
 
-})
-
-// router.get('/', (req, res) => {
-
-
-
-// })

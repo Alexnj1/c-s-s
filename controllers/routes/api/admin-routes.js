@@ -1,12 +1,13 @@
-const res = require('express/lib/response');
-const PostCategory = require('../../../models/Post-Category');
+//const res = require('express/lib/response');
+// const PostCategory = require('../../../models/Post-Category');
 
-const router = require('express').Router();
-const { Admin, Comment, PostCategory, Post, User } = require('../../models');
-const withAuth = require('../../utilities/auth')
+const express = require('express')
+const router = express.Router();
+const { Admin, Comment, Post, User } = require('../../../models/relationships');
+// const withAuth = require('../../utilities/auth')
 
 
-// get all admins
+//get all admins
 router.get('/', (req, res) => {
     Admin.findAll({
         attributes: { exclude: ['password'] }
@@ -141,3 +142,4 @@ router.post('/logout', (req,res) => {
 
 
 })
+module.exports = router

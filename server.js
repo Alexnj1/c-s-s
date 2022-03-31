@@ -4,7 +4,7 @@ const sequelize = require("./models/db/connection");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const routes = "" //ADD ROUTES IMPORT
+const routes = require("./controllers/routes/api")//ADD ROUTES IMPORT
 const helpers = ""; //ADD HELPERS IMPORT IF NEEDED
 const {
   User,
@@ -58,7 +58,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // will already be looking in public folder, dont reference public in handlebars
 app.use(session(sess));
-//app.use(routes); // this will be used for routes
+app.use(routes); // this will be used for routes
 
 
 // ENABLE CONNECTION
