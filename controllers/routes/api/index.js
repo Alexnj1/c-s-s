@@ -9,7 +9,7 @@ const postRoutes = require('./post-routes.js');
 router.use('/test', test)
 router.use('/admin', adminRoutes);
 router.use('/user',userRoutes)
-router.use('/comment',commentRoutes)
+router.use('/comments',commentRoutes)
 router.use('/post',postRoutes)
 
 module.exports = router
