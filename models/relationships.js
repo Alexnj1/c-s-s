@@ -45,7 +45,6 @@ Post.belongsTo(PostCategory, {
   foreignKey: "post_category_id",
 });
 
-
 Comment.belongsTo(User, {
   foreignKey: "user_id",
 });
