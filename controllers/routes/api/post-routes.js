@@ -61,8 +61,8 @@ router.post('/', (req, res) => {
     Post.create({
         post_title: req.body.post_title,
         post_content: req.body.post_content,
-        user_id: req.body.user_id,
-        admin_id: req.body_user.id,
+        user_id: req.session.user_id,
+        admin_id: req.session.id,
     })
         .then(data => res.json(data))
         .catch(err => {
@@ -77,7 +77,13 @@ router.put('/:id', (req, res) => {
     Post.update({
         post_title: req.body.post_title,
         post_content: req.body.post_content,
-    })
+    },
+    {
+        where: {
+          id: req.params.id
+        }
+      })
+    
 
         .then(data => res.json(data))
         .catch(err => {

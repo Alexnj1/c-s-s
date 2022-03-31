@@ -7,18 +7,10 @@ const session = require("express-session");
 const routes = require("./controllers/routes/api")//ADD ROUTES IMPORT
 const helpers = ""; //ADD HELPERS IMPORT IF NEEDED
 const {
-  User,
-  Post,
-  PostCategory,
-  Comment,
-  Admin,
+  models
 } = require("./models/relationships");
 
-User;
-Post;
-PostCategory;
-Comment;
-Admin;
+{models}
 
 // INITIALIZE EXPRESS
 const app = express();
