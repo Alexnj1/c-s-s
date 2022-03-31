@@ -4,7 +4,7 @@ const sequelize = require("./models/db/connection");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const routes = require("./controllers/routes/api")//ADD ROUTES IMPORT
+const routes = require("./controllers/routes/index")//ADD ROUTES IMPORT
 const helpers = ""; //ADD HELPERS IMPORT IF NEEDED
 const {
   models

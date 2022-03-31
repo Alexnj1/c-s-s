@@ -20,6 +20,10 @@ router.get('/', (req, res) => {
                 model: Admin,
                 attributes: ['name', 'position',],
             },
+            {
+                model: PostCategory,
+                attributes:['category_name']
+            }
         ]
     })
 
@@ -45,6 +49,10 @@ router.get('/:id', (req, res) => {
                 model: Admin,
                 attributes: ['name', 'position',],
             },
+            {
+                model: PostCategory,
+                attributes:['category_name']
+            }
         ]
     })
 
