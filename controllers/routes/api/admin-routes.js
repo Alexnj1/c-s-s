@@ -71,9 +71,8 @@ router.post('/', (req, res) => {
         email: req.body.email,
     })
         .then(data => {
-            req.sesssion.save(() => {
+            req.session.save(() => {
                 req.session.email = data.email;
-                req.session.user_id = data.id;
                 req.session.logged_in = true
                 res.json(data)
 
@@ -87,32 +86,32 @@ router.post('/', (req, res) => {
 })
 
 
-// admin log in
-router.post('/login', (req, res) => {
+// admin log in, no password
+// router.post('/login', (req, res) => {
 
-    Admin.findOne({
-        where: { email: req.body.email }
-    })
-        .then(data => {
-            if (!data) {
-                res.status(400).json({ message: 'This admin does not exist!' })
-                return;
-            }
+//     Admin.findOne({
+//         where: { email: req.body.email }
+//     })
+//         .then(data => {
+//             if (!data) {
+//                 res.status(400).json({ message: 'This admin does not exist!' })
+//                 return;
+//             }
 
-            const correctPass = data.checkPassword(req.body.password);
-            if (!correctPass) {
-                res.status(400).json({ message: 'Incorrect Password' })
-                return
-            }
-                req.session.save(() => {
-                    req.session.email = data.email;
-                    req.session.user_id = data.id;
-                    req.session.logged_in = true
-                    res.json(data)
-                })
-            })
+//             const correctPass = data.checkPassword(req.body.password);
+//             if (!correctPass) {
+//                 res.status(400).json({ message: 'Incorrect Password' })
+//                 return
+//             }
+//                 req.session.save(() => {
+//                     req.session.email = data.email;
+//                     req.session.user_id = data.id;
+//                     req.session.logged_in = true
+//                     res.json(data)
+//                 })
+//             })
 
-})
+// })
 
 
 // delete admin

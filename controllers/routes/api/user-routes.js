@@ -38,11 +38,11 @@ router.get('/:id', (req, res) => {
                 attributes: ['id', 'comment_content', 'created_at'],
                 include: [{
                     model: Post,
-                    attributes: ['title']
+                    attributes: ['post_title']
                 },
                 {
                     model: Admin,
-                    attributes: ['admin_id']
+                    attributes: ['id']
                 }]
             }]
            
@@ -61,16 +61,17 @@ router.get('/:id', (req, res) => {
         });
 })
 
-// create an user
+// create a user
 router.post('/', (req, res) => {
-    user.create({
+    User.create({
         household_username: req.body.household_username,
         email: req.body.email,
         house_number: req.body.house_number,
+        password: req.body.password
 
     })
         .then(data => {
-            req.sesssion.save(() => {
+            req.session.save(() => {
                 req.session.household_username = data.id
                 req.session.email = data.email;
                 req.session.logged_in = true
