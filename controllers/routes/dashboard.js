@@ -9,18 +9,7 @@ const { Admin, Comment, PostCategory, Post, User } = require('../../models/relat
 router.get('/', (req,res) => {
     Post.findAll({
         where: {user_id: req.session.user_id},
-        attributes: ['post_title', 'post_content', 'createdAt', 'updatedAt'],
-        include: [
-            {
-                model: User,
-                attributes: ['household_username']
-            },
-            {
-                model: Admin,
-                attributes: ['name', 'position',],
-            },
-        ]
-
+        attributes: ['post_title', 'post_content', 'createdAt', 'updatedAt']
     })
     .then(data => {
         const allPosts = data.map(allPosts => allPosts.get({plain:true})) 
@@ -36,6 +25,8 @@ router.get('', (req,res) =>{
 
 
 })
+
+
 
 
 
