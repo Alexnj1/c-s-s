@@ -4,7 +4,7 @@ const sequelize = require('../../models/db/connection')
 const { Admin, Comment, PostCategory, Post, User } = require('../../models/relationships');
 
 router.get('/', (req,res) => {
-    res.render('homepage')
+    res.render('landing-page')
 })
 
 router.get('/:id', (req,res) => {

@@ -12,15 +12,15 @@
       crossorigin="anonymous"
     />
 
-    <title>CSS Residency/title>
+    <title> CSS Residency </title>
   </head>
   
   <body>
     <header class="d-flex justify-content-between" style="background-color:darkgray;">
       
-        <div>
-          <p>
-            <p class="my-2 mx-3" style="font-size: 25px"
+      <div>
+        <p>
+          <p class="my-2 mx-3" style="font-size: 25px"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseWidthExample"
@@ -29,16 +29,26 @@
             >
             Menu
           </p>
-            
-          </button>
+        
         </p>
         
         
       </div>
         
+      {{#if loggedIn}}
       <nav class="d-flex justify-content-between mx-4">
-        <p class="my-3" style="font-size: 25px">Login</p>
+        <p class="my-3" style="font-size: 25px">Logout</p>
       </nav>
+      <nav class="d-flex justify-content-between mx-4">
+        <p class="my-3" style="font-size: 25px">Dashboard</p>
+      </nav>
+      {{else}}
+      <nav class="d-flex justify-content-between mx-4">
+        <a class="text-decoration-none" href="/homepage/login">
+          <p class="my-3" style="font-size: 25px">Login</p>
+        </a>
+      </nav>
+      {{/if}}
     </header>
 
 
