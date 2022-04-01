@@ -7,6 +7,14 @@ router.get('/', (req,res) => {
     res.render('landing-page')
 })
 
+router.get('/login',(req,res) => {
+    if(req.session.loggedIn) {
+        res.redirect('/');
+        return
+    }
+    res.render('login', req.session.loggedIn);
+})
+
 router.get('/:id', (req,res) => {
     Post.findAll({
         where: {Post_Category_id: req.params.id},
@@ -14,7 +22,7 @@ router.get('/:id', (req,res) => {
     })
     .then(data => {
       const allPosts = data.map(allPosts => allPosts.get({plain:true})) 
-      res.render('dashboard',{allPosts, loggedIn: true})
+      res.render('dashboard',{allPosts, loggedIn: req.session.loggedIn})
       
     })  
     .catch(err => {
@@ -23,12 +31,6 @@ router.get('/:id', (req,res) => {
     });
 })
 
-router.get('/login',(req,res) => {
-    if(req.session.loggedIn) {
-        res.redirect('/');
-        return
-    }
-    res.render('login');
-})
+
 
 module.exports = router

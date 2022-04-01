@@ -1,5 +1,5 @@
 <!-- MAIN  -->
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -11,29 +11,52 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/stylesheet.css" />
 
-    <title> CSS Residency </title>
+    <title>CSS Residency</title>
   </head>
-  
+
   <body>
+<<<<<<< HEAD
     <header class="d-flex justify-content-between" style="background-color:darkgray;">
       
       <div>
         <p>
           <p class="my-2 mx-3" style="font-size: 25px"
+=======
+    <header
+      class="d-flex justify-content-between"
+      style="background-color:darkgray;"
+    >
+
+      <div>
+        <p>
+          <p
+            class="my-2 mx-3 fw-bold"
+            style="font-size: 25px"
+>>>>>>> main
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseWidthExample"
             aria-expanded="false"
             aria-controls="collapseWidthExample"
-            >
+          >
             Menu
           </p>
+<<<<<<< HEAD
         
+=======
+>>>>>>> main
         </p>
-        
-        
+
       </div>
+<<<<<<< HEAD
         
       {{#if loggedIn}}
       <nav class="d-flex justify-content-between mx-4">
@@ -48,27 +71,32 @@
           <p class="my-3" style="font-size: 25px">Login</p>
         </a>
       </nav>
+=======
+
+      {{#if loggedIn}}
+        <nav class="d-flex justify-content-between mx-4">
+          <p class="my-3 fw-bold" style="font-size: 25px">Logout</p>
+        </nav>
+        <nav class="d-flex justify-content-between mx-4">
+          <p class="my-3 fw-bold" style="font-size: 25px">Dashboard</p>
+        </nav>
+      {{else}}
+        <nav class="d-flex justify-content-between mx-4">
+          <a class="text-decoration-none text-dark" href="/homepage/login"><p
+              class="my-3 fw-bold"
+              style="font-size: 25px;"
+            >Login</p></a>
+        </nav>
+>>>>>>> main
       {{/if}}
     </header>
 
-
-    <div>
-        <div class="collapse collapse-horizontal" id="collapseWidthExample">
-        <div class="card card-body" style="width: 300px; height: 100vh;">
-            <ul class="list-group list-group-flush">
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">About Us</li></a></span>
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Rules</li></a></span>
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Contact Info</li></a></span>
-            </ul>
-        </div>
-        </div>
-    </div>   
-    
     <!-- MAIN -->
-    
+
+    {{{body}}}
 
     <!-- MAIN -->
-    {{{ body }}}
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
