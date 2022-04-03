@@ -1,6 +1,3 @@
-//const res = require('express/lib/response');
-// const PostCategory = require('../../../models/Post-Category');
-
 const express = require("express");
 const router = express.Router();
 const { Admin, Comment, Post, User } = require("../../../models/relationships");
@@ -34,7 +31,7 @@ router.get("/:id", (req, res) => {
         include: [
           {
             model: Post,
-            attributes: ["title"],
+            attributes: ["post_title"],
           },
         ],
       },
