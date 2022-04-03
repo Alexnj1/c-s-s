@@ -1,6 +1,3 @@
-const res = require("express/lib/response");
-//const PostCategory = require('../../../models/Post-Category');
-
 const router = require("express").Router();
 const {
   Admin,
@@ -15,7 +12,7 @@ const {
 
 router.get("/", (req, res) => {
   Comment.findAll({
-    attributes: ["comment_content"],
+    attributes: ["id", "comment_content"],
     include: [
       {
         model: Post,
@@ -57,14 +54,11 @@ router.post("/", (req, res) => {
 //update a comment
 
 router.put("/:id", (req, res) => {
-  Comment.update(
-    { comment_content: req.params.comment_content },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
+  Comment.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);
@@ -81,7 +75,7 @@ router.delete("/:id", (req, res) => {
     },
   })
     .then(() => {
-      res.status(200).json({status: 'success'});
+      res.status(200).json({ status: "success" });
     })
     .catch((err) => {
       res.json(err);
