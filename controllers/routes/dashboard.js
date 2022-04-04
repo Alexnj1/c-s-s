@@ -7,13 +7,16 @@ const { Admin, Comment, PostCategory, Post, User } = require('../../models/relat
 
 //get all posts
 router.get('/', (req,res) => {
-    Post.findAll({
-        where: {user_id: req.session.user_id},
-        attributes: ['post_title', 'post_content', 'createdAt', 'updatedAt']
+    User.findOne({
+        where: {
+            id: req.session.user_id
+        }
     })
     .then(data => {
-        const allPosts = data.map(allPosts => allPosts.get({plain:true})) 
-        res.render('dashboard',{allPosts, loggedIn: true})
+        const userData = data.get({plain:true}) 
+        console.log(req.session.logged_in)
+        console.log(data)
+        res.render('dashboard', {userData, loggedIn: req.session.logged_in})
     })
     .catch(err => {
         console.log(err);

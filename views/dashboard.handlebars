@@ -1,9 +1,16 @@
 <body class="image-three">
+
+    
     
         <div class="text-center col-auto row mb-5 w-50 mx-auto g-3 justify-content-center flex-column welcome-message">
-            <button class="btn btn-secondary mx-2 fw-bold ">
-                <p class="my-auto">Neighborhood <br> News</p>
-            </button>
+            <h2 class="text-center fw-bold">{{userData.household_username}} <br> House Number: {{userData.house_number}} <br><br> Your Dashboard </h2>
+            <span class="">
+                <a href="/homepage/posts">
+                <button class="btn btn-secondary mx-2 fw-bold w-100">
+                    <p class="my-auto">Neighborhood <br> Posts</p>
+                </button>
+                </a>
+            </span>
             <button class="btn btn-secondary mx-2 fw-bold">
                 <p class="my-auto">File a <br> Formal Complaint</p>
             </button>

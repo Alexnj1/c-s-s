@@ -13,6 +13,7 @@
 .image-one {
   background-image: url(https://www.moneycrashers.com/wp-content/uploads/2018/12/tips-find-best-neighborhood-live-in.jpg);
   background-size: cover;
+  height: 100vh;
 }
 
 .image-two {
@@ -30,10 +31,13 @@
   background-size: cover;
   height:100vh;
 }
-body{
-  overflow: hidden;
 
+.image-five {
+  background-image: url(https://nextcity.org/images/made/Chicago_Chatham_Houses1-001_1400_781_80.jpg);
+  background-size: cover;
+  height:100vh;
 }
+
 .event {
   margin: 20px 100px;
   padding: 20px;

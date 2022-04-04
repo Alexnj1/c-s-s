@@ -9,14 +9,18 @@ const {
   User,
 } = require("../../models/relationships");
 
-router.get("'**INSERT POSTS PAGE NAME HERE**'/:id", (req, res) => {
+router.get('/', (req,res) => {
+  res.render('landing-page', {loggedIn: req.session.logged_in})
+})
+
+router.get("/posts", (req, res) => {
   Post.findAll({
-    where: { Post_Category_id: req.params.id },
+    // where: { Post_category_id: req.params.id },
     attributes: ["post_title", "post_content", "createdAt", "updatedAt"],
   })
     .then((data) => {
       const allPosts = data.map((allPosts) => allPosts.get({ plain: true }));
-      res.render("INSERT PAGE NAME", { allPosts, loggedIn: req.session.loggedIn });
+      res.render("posts", { allPosts, loggedIn: req.session.logged_in });
     })
     .catch((err) => {
       console.log(err);
@@ -25,3 +29,4 @@ router.get("'**INSERT POSTS PAGE NAME HERE**'/:id", (req, res) => {
 });
 
 module.exports = router;
+

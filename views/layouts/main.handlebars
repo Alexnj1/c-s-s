@@ -32,7 +32,7 @@
         <p>
           <p
             class="my-2 mx-3 fw-bold"
-            style="font-size: 25px"
+            style="font-size: 20px"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseWidthExample"
@@ -46,21 +46,38 @@
       </div>
 
       {{#if loggedIn}}
+      <div class="d-flex">
         <nav class="d-flex justify-content-between mx-4">
-          <p class="my-3 fw-bold" style="font-size: 25px">Logout</p>
+          <span><a href="/dashboard"><p class="my-2 fw-bold btn" style="font-size: 20px">Dashboard</p></a></span>
         </nav>
         <nav class="d-flex justify-content-between mx-4">
-          <p class="my-3 fw-bold" style="font-size: 25px">Dashboard</p>
+          <p class="my-2 fw-bold btn logout" style="font-size: 20px">Logout</p>
         </nav>
+      </div>
       {{else}}
         <nav class="d-flex justify-content-between mx-4">
-          <a class="text-decoration-none text-dark" href="/homepage/login"><p
+          <a class="text-decoration-none text-dark" href="/dashboard/login"><p
               class="my-3 fw-bold"
-              style="font-size: 25px;"
+              style="font-size: 20px;"
             >Login</p></a>
         </nav>
       {{/if}}
     </header>
+
+    <div>
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="card card-body" style="width: 300px; height: 100vh;">
+            <ul class="list-group list-group-flush">
+                <span><a class="text-decoration-none" href="/homepage"><li class="list-group-item my-3 fs-3">Homepage</li> </a></span>
+                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">About Us</li></a></span>
+                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Rules</li></a></span>
+                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Contact Info</li></a></span>
+            </ul>
+
+            <p style="position: absolute; bottom: 10vh">&copy;2022 C-S-S Neighbourhoods <br> By: Alex, Blerand &amp; Dedrie</p>
+        </div>
+        </div>
+    </div> 
 
     <!-- MAIN -->
 
@@ -73,6 +90,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>
 

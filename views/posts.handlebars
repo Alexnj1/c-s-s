@@ -1,0 +1,31 @@
+<body class="image-five">
+
+<div class="text-center">
+    <h2 class="text-center fw-bold my-4">Neighborhood Posts</h2>
+  <span><a href="/dashboard/add-post"><button class="btn btn-info mb-3">Add a Post</button></a></span>
+</div>
+  
+
+<div class="row">
+
+    <div class="col-8">
+      {{#each allPosts}}
+        <div class="border border-3 border-solid border-dark my-3 mx-4 p-3" style="border-radius:15px ;background-color:lightskyblue">
+            <p>Posted By: {{this.user}}</p>
+            <p>Title: {{this.post_title}}</p>
+            <p>{{this.post_content}}</p>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="col-4 border border-3 border-solid border-dark my-3 mx-3 p-3" style="height: 330px ; width:30vw; border-radius:15px ;background-color:lightskyblue; position:sticky; top:20px;">
+        <div class="d-flex flex-column justify-content-between">
+            <button type="button" class="btn btn-outline-dark my-3 fw-bold">News from the Admins 📰</button>
+            <button type="button" class="btn btn-outline-dark my-3 fw-bold">Posts from the Community 🏘️</button>
+            <button type="button" class="btn btn-outline-dark my-3 fw-bold">Events 🎫</button>
+            <span><a href="/homepage/"><button type="button" class="btn btn-outline-dark my-3 fw-bold w-100">Daily Fun 🎉</button></a></span>
+        </div>
+    </div>
+</div>
+
+</body>
