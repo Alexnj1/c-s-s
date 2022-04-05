@@ -12,47 +12,6 @@ const {
 
 { models }
 
-const nodemailer = require("nodemailer")
-async function emailNotification() {
-
-
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-      user: 'adriel.kuhn98@ethereal.email',
-      pass: '5JjQJVmFd2rRSNTJve'
-    }
-  });
-
-
-  let info = await transporter.sendMail({
-    from: '"CSS properties" <help@luxury.net>',
-    to: "ap1@luxury.net",
-    subject: "Help",
-    text: "Help is on the way",
-    html: "<b> Help is on the way!",
-
-  })
-
-  transporter.sendMail(info, function (err, data) {
-  
-  if (err) {
-    console.log("error")
-  }else {
-    console.log("success!")
-  }
-    
-  
-
-})
-  
-}
-
-emailNotification()
-
-
-
 // INITIALIZE EXPRESS
 const app = express();
 

@@ -7,6 +7,8 @@ const {
   Post,
   User,
 } = require("../../../models/relationships");
+const nodemailer = require("nodemailer"); 
+
 //const withAuth = require('../../utilities/auth')
 
 //GET ALL POSTS
@@ -90,14 +92,27 @@ router.get("/:id", (req, res) => {
 
 //create a post
 router.post("/", (req, res) => {
+  const postDetails = {
+    title: req.body.post_title,
+    message: req.body.post_content,
+    from: req.session.email
+  };
+
+
   Post.create({
     post_title: req.body.post_title,
     post_content: req.body.post_content,
-    user_id: req.session.user_id,
-    admin_id: req.session.id,
+    // user_id: req.session.user_id,
+    // admin_id: req.session.id,
+    user_id: req.body.user_id,
+    admin_id: req.body.admin_id,
+    post_category_id: req.body.post_category_id
   })
     .then((data) => res.json(data))
-    .then( emailNotification())
+    .then(() => {
+      //emails sent to admins for complaint
+      if (req.body.post_category_id === 2) emailNotification(postDetails)
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -128,11 +143,7 @@ router.put("/:id", (req, res) => {
 //delete a post
 
 
-
-
-const nodemailer = require("nodemailer")
-async function emailNotification() {
-
+async function emailNotification(postDetails) {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
@@ -145,29 +156,27 @@ async function emailNotification() {
 
 
   let info = await transporter.sendMail({
-    from: '"CSS properties" <help@luxury.net>',
+    from: '"Resident Complaint"' + postDetails.from,
     to: "ap1@luxury.net",
-    subject: "Help",
-    text: "Help is on the way",
-    html: "<b> Help is on the way!",
+    subject: postDetails.title,
+    text: postDetails.message,
+    html: `<b> ${postDetails.message} </b>`,
 
   })
 
   transporter.sendMail(info, function (err, data) {
-  
-  if (err) {
-    console.log("error")
-  }else {
-    console.log("success!")
-  }
-    
-  
 
-})
-  
+    if (err) {
+      console.log("error")
+    } else {
+      console.log("success!")
+    }
+
+
+
+  })
+
 }
-
-emailNotification()
 
 
 
