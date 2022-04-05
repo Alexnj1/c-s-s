@@ -12,6 +12,26 @@ const {
 
 {models}
 
+const nodemailer = require("nodemailer")
+async function emailNotification () {
+  
+  
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'adriel.kuhn98@ethereal.email',
+        pass: '5JjQJVmFd2rRSNTJve'
+    }
+  });
+  
+
+  let info = await transporter.sendMail
+
+}
+
+
+
 // INITIALIZE EXPRESS
 const app = express();
 
