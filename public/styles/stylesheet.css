@@ -6,34 +6,48 @@
   margin: 20px 100px;
   padding: 20px;
   border-radius: 15px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(12px);
   border: solid 2px black;
 }
 
+/* FOR ALL IMAGES */
+
+.image-options {
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+/* URLS FOR EACH BACKGROUND IMAGE */
+
 .image-one {
   background-image: url(https://www.moneycrashers.com/wp-content/uploads/2018/12/tips-find-best-neighborhood-live-in.jpg);
-  background-size: cover;
 }
 
 .image-two {
-    background-image: url(https://images.unsplash.com/photo-1630650231815-a567e2ed26cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-    background-size: cover;
-    height:100vh;
+  background-image: url(https://images.unsplash.com/photo-1630650231815-a567e2ed26cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
 }
 .image-three {
   background-image: url(https://images.unsplash.com/photo-1611282712338-63a58e27980a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-  background-size: cover;
-  height:100vh;
 }
 .image-four {
   background-image: url(https://images.unsplash.com/photo-1472698938026-79bed881e5b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-  background-size: cover;
-  height:100vh;
 }
-body{
-  overflow: hidden;
 
+.image-five {
+  background-image: url(https://nextcity.org/images/made/Chicago_Chatham_Houses1-001_1400_781_80.jpg);
+  top: 10px;
 }
+
+.image-five {
+  background-image: url(https://nextcity.org/images/made/Chicago_Chatham_Houses1-001_1400_781_80.jpg);
+  top: 10px;
+}
+
+.image-six {
+  background-image: url(https://www.guideposts.org/sites/default/files/styles/bynder_webimage/public/story/untitled_design-4_0.jpg);
+}
+
 .event {
   margin: 20px 100px;
   padding: 20px;

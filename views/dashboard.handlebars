@@ -1,18 +1,66 @@
-<body class="image-three">
+<body class="image-three image-options">
+
+    
     
         <div class="text-center col-auto row mb-5 w-50 mx-auto g-3 justify-content-center flex-column welcome-message">
-            <button class="btn btn-secondary mx-2 fw-bold ">
-                <p class="my-auto">Neighborhood <br> News</p>
+            <h2 class="text-center fw-bold">{{userData.household_username}} <br> House Number: {{userData.house_number}} <br><br> Your Dashboard </h2>
+            <span class="">
+                <a href="/homepage/posts/2">
+                <button class="btn btn-secondary mx-2 fw-bold w-100">
+                    <p class="my-auto"> Neighborhood <br> Posts 🏘️</p>
+                </button>
+                </a>
+            </span>
+            <span class="">
+                <a href="/dashboard/add/">
+                <button class="btn btn-secondary mx-2 fw-bold w-100">
+                    <p class="my-auto">Create a <br> Post 📫</p>
+                </button>
+                </a>
+            </span>
+            <span class="">
+                <a href="/dashboard/add/compliment">
+                <button class="btn btn-secondary mx-2 fw-bold w-100">
+                    <p class="my-auto"> Show some ❤️<br> for C-S-S</p>
+                </button>
+                </a>
+            </span>
+            <span class="">
+                <a href="/dashboard/add/complaint">
+                <button class="btn btn-secondary mx-2 fw-bold w-100">
+                    <p class="my-auto">File a <br> Formal Complaint 🚫 </p>
+                </button>
+                </a>
+            </span>
+            {{#if userData.posts.length}}
+            <button class="btn btn-secondary mx-2 fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <p class="my-auto"> View Your <br> Posts</p>
             </button>
-            <button class="btn btn-secondary mx-2 fw-bold">
-                <p class="my-auto">File a <br> Formal Complaint</p>
-            </button>
-            <button class="btn btn-secondary mx-2 fw-bold">
-                <p class="my-auto"> Create an<br> Event</p>
-            </button>
-            <button class="btn btn-secondary mx-2 fw-bold">
-                <p class="my-auto"> Show some <br> Love for C-S-S</p>
-            </button>
+            {{/if}}
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Posts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each userData.posts}}
+                <a class="text-decoration-none text-dark" href="/homepage/post/{{this.id}}"><div class="my-2 border border-dark border-solid border-2 p-2" style="border-radius: 15px; background-color:lightskyblue">
+                Title: {{this.post_title}} <br>
+                Content: {{this.post_content}} <br>
+                Created: {{format_date this.created_at}}
+                </div></a>
+                {{/each}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
         </div>
         
 </body>
