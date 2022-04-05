@@ -4,8 +4,8 @@ const sequelize = require("./models/db/connection");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const routes = require("./controllers/routes/index")//ADD ROUTES IMPORT
-const helpers = ""; //ADD HELPERS IMPORT IF NEEDED
+const routes = require("./controllers/index")//ADD ROUTES IMPORT
+const helpers = require('./utilities/helpers'); //ADD HELPERS IMPORT IF NEEDED
 const {
   models
 } = require("./models/relationships");
@@ -16,7 +16,7 @@ const {
 const app = express();
 
 // SET HANDLEBARS ENGINE
-const hbs = exphbs.create({}); //ADD HELPERS IF IMPORTED
+const hbs = exphbs.create({helpers}); //ADD HELPERS IF IMPORTED
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
@@ -35,8 +35,8 @@ const sess = {
     // IF we want to modify session expiration
 
     // Alternate between main and testing expiration intervals, NOT both.
-    // checkExpirationInterval: 300000, // main - 5 minutes
-    // expiration: 300000               // main - 5 minutes
+    checkExpirationInterval: 300000, // main - 5 minutes
+    expiration: 300000               // main - 5 minutes
 
     //==========================================================
 

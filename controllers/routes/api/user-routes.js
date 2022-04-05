@@ -38,10 +38,6 @@ router.get("/:id", (req, res) => {
             model: Post,
             attributes: ["post_title"],
           },
-          //   {
-          //     model: Admin,
-          //     attributes: ["id"],
-          //   },
         ],
       },
     ],
@@ -65,7 +61,7 @@ router.post("/", (req, res) => {
   User.create({
     household_username: req.body.household_username,
     email: req.body.email,
-    house_number: req.body.house_number,
+    house_number: Math.random().toString().slice(4,8),
     password: req.body.password,
   })
     .then((data) => {
@@ -87,35 +83,36 @@ router.post("/login", (req, res) => {
   User.findOne({
     where: { email: req.body.email },
   }).then((data) => {
+    // let id = data.id;
     if (!data) {
       res.status(400).json({ message: "This User does not exist!" });
       return;
     }
 
     const correctPass = data.checkPassword(req.body.password);
+    console.log(correctPass)
+
     if (!correctPass) {
       res.status(400).json({ message: "Incorrect Password" });
       return;
+    } else {
+      req.session.save(() => {
+        req.session.email = data.email;
+        req.session.user_id = data.id;
+        req.session.logged_in = true;
+        res.status(200).send("Success");
+        console.log(req.session);
+      });
     }
-    req.session.save(() => {
-      req.session.email = data.email;
-      req.session.user_id = data.id;
-      req.session.logged_in = true;
-      res.json(req.session);
-      console.log(req.session);
-    });
   });
 });
 
 // logout route
 router.post("/logout", (req, res) => {
-  req.session
-    .destroy((err) => {
-      if (err) throw err;
-    })
-    .then(() => {
-      res.redirect("/");
-    });
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.redirect("/");
+  });
 });
 
 // DELETE USER

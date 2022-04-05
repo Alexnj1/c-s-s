@@ -94,7 +94,8 @@ router.post("/", (req, res) => {
     post_title: req.body.post_title,
     post_content: req.body.post_content,
     user_id: req.session.user_id,
-    admin_id: req.session.id,
+    admin_id: req.session.admin_id,
+    post_category_id: req.body.post_category_id
   })
     .then((data) => res.json(data))
     .catch((err) => {

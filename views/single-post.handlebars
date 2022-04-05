@@ -1,0 +1,46 @@
+<body class="image-five">
+    <div class="welcome-message">
+        <h2 class="text-center fw-bold">Post from: {{singlePost.user.household_username}}{{singlePost.admin.name}}</h2>
+        <h3 class="text-center">In Category: {{singlePost.post_category.category_name}}</h3>
+        <br><br>
+        <h4 class="text-center">{{singlePost.post_title}}</h4> <br><br>
+        <h4 class="text-center">{{singlePost.post_content}}</h4>
+
+        <div class="input-group my-5 mx-auto" style="width: 50vw;">
+            <input type="text" class="form-control" placeholder="Say something..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span><button name="post" class="btn btn-info">Post Comment</button></span>
+        </div>
+
+        {{#if singlePost.comments.length}}
+        <div class="text-center">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">View Comments</button>
+        </div>
+        {{/if}}
+    </div>
+
+    <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each singlePost.comments}}
+                <div class="my-2 border border-dark border-solid border-2 p-2" style="border-radius: 15px; background-color:lightskyblue">
+                Posted By: {{this.user.household_username}} <br>
+                Content: {{this.comment_content}} <br>
+                On: {{format_date this.createdAt}}
+                </div>
+                {{/each}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</body>
+
+<script src="/js/post-comment.js"></script>
