@@ -14,6 +14,26 @@ router.get("/", (req, res) => {
   res.render("landing-page", { loggedIn: req.session.logged_in });
 });
 
+router.get('/register', (req,res) => {
+  if (req.session.user_id) {
+    res.redirect('/dashboard')
+  } else {
+    res.render("register")
+  }
+})
+
+router.get('/about', (req,res) => {
+  res.render('about', {loggedIn: req.session.logged_in})
+})
+
+router.get('/rules', (req,res) => {
+  res.render('rules', {loggedIn: req.session.logged_in})
+})
+
+router.get('/contact', (req,res) => {
+  res.render('contact', {loggedIn: req.session.logged_in})
+})
+
 router.get("/posts/:id", withAuth, (req, res) => {
   Post.findAll({
     where: { post_category_id: req.params.id },
@@ -30,6 +50,7 @@ router.get("/posts/:id", withAuth, (req, res) => {
         "comment_count",
       ],
     ],
+    order: [['createdAt', 'DESC']],
     include: [
       {
         model: User,

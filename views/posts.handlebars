@@ -1,4 +1,4 @@
-<body class="image-five">
+<body class="image-five image-options">
 
     <div class="text-center">
         <h2 class="text-center fw-bold my-4">Neighborhood Posts</h2>
@@ -12,7 +12,7 @@
         {{#each allPosts}}
             <div class="border border-3 border-solid border-dark my-3 mx-4 p-3" style="border-radius:15px ;background-color:lightskyblue">
                 <p>Category: {{this.post_category.category_name}}</p>
-                <p>Posted By: {{this.user.household_username}}{{this.admin.name}}</p>
+                <p>Posted By: {{this.user.household_username}}{{this.admin.name}}, On: {{format_date this.createdAt}}</p>
                 <p>Title: {{this.post_title}}</p>
                 <p>{{this.post_content}}</p>
                 <p>Comments: {{this.comment_count}}</p>
@@ -37,7 +37,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold" id="exampleModalLabel">Daily Quote</h5>
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Quote of the Day</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

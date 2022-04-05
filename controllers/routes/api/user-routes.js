@@ -61,7 +61,7 @@ router.post("/", (req, res) => {
   User.create({
     household_username: req.body.household_username,
     email: req.body.email,
-    house_number: req.body.house_number,
+    house_number: Math.random().toString().slice(4,8),
     password: req.body.password,
   })
     .then((data) => {
@@ -89,12 +89,13 @@ router.post("/login", (req, res) => {
       return;
     }
 
-    // const correctPass = data.checkPassword(req.body.password);
+    const correctPass = data.checkPassword(req.body.password);
+    console.log(correctPass)
 
-    // if (!correctPass) {
-    //   res.status(400).json({ message: "Incorrect Password" });
-    //   return;
-    // } else {
+    if (!correctPass) {
+      res.status(400).json({ message: "Incorrect Password" });
+      return;
+    } else {
       req.session.save(() => {
         req.session.email = data.email;
         req.session.user_id = data.id;
@@ -102,7 +103,7 @@ router.post("/login", (req, res) => {
         res.status(200).send("Success");
         console.log(req.session);
       });
-    // }
+    }
   });
 });
 

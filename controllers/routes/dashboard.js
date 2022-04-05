@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../models/db/connection");
-const withAuth = require('../../utilities/auth')
+const withAuth = require("../../utilities/auth");
 
 const {
   Admin,
@@ -24,12 +24,12 @@ router.get("/", withAuth, (req, res) => {
           "post_content",
           "user_id",
           "created_at",
-        //   [
-        //     sequelize.literal(
-        //       "(SELECT COUNT (*) FROM comment WHERE comment.post_id = id)"
-        //     ),
-        //     "comment_count",
-        //   ],
+          //   [
+          //     sequelize.literal(
+          //       "(SELECT COUNT (*) FROM comment WHERE comment.post_id = id)"
+          //     ),
+          //     "comment_count",
+          //   ],
         ],
       },
       {
@@ -66,6 +66,14 @@ router.get("/login", (req, res) => {
 
 router.get("/add", withAuth, (req, res) => {
   res.render("add-post", { loggedIn: req.session.logged_in });
+});
+
+router.get("/add/complaint", withAuth, (req, res) => {
+  res.render("complaint", { loggedIn: req.session.logged_in });
+});
+
+router.get("/add/compliment", withAuth, (req, res) => {
+  res.render("compliment", { loggedIn: req.session.logged_in });
 });
 
 module.exports = router;
