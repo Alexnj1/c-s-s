@@ -11,13 +11,13 @@ const {
 async function seedDatabase() {
   await PostCategory.bulkCreate([
     {
-      category_name: "Category 1",
+      category_name: "News",
     },
     {
-      category_name: "Category 2",
+      category_name: "Community",
     },
     {
-      category_name: "Category 3",
+      category_name: "Events",
     },
   ]).then(() => {
     console.log("********Categories Seeded********");
@@ -25,23 +25,30 @@ async function seedDatabase() {
 
   await User.bulkCreate([
     {
-      household_username: "users1",
-      house_number: 1,
+      household_username: "House 1",
+      house_number: 1123,
       email: "user1@luxury.com",
       password: "password1234",
     },
     {
-      household_username: "users2",
-      house_number: 2,
+      household_username: "House 2",
+      house_number: 2232,
       email: "user2@luxury.com",
       password: "password1234",
     },
     {
-      household_username: "users3",
-      house_number: 3,
+      household_username: "House 3",
+      house_number: 3232,
       email: "user3@luxury.com",
       password: "password1234",
     },
+    {
+      household_username: "House 4",
+      house_number: 5453,
+      email: "user4@luxury.com",
+      password: "password1234",
+    },
+
   ]).then(() => {
     console.log("********Users Seeded********");
   });
@@ -51,46 +58,56 @@ async function seedDatabase() {
       name: "admin1",
       position: "admin",
       email: "admin@luxuryadmin.com",
+      password: 'password1234'
     },
     {
       name: "admin2",
       position: "admin",
       email: "admin2@luxuryadmin.com",
+      password: 'password1234'
     },
     {
       name: "admin3",
       position: "admin",
       email: "admin3@luxuryadmin.com",
+      password: 'password1234'
     },
+
   ]).then(() => {
     console.log("********Admins Seeded********");
   });
 
   await Post.bulkCreate([
     {
-      post_title: "post1",
-      post_content: "this is post 1",
+      post_title: "Missing Child!",
+      post_content: "Look out for little debbie! from house number 2323!",
       admin_id: 1,
       post_category_id: 1,
     },
     {
-      post_title: "post2",
-      post_content: "this is post 2",
-      admin_id: 2,
+      post_title: "oh no!",
+      post_content: "i hope debbie gets found!",
+      user_id: 2,
       post_category_id: 2,
     },
     {
-      post_title: "post3",
-      post_content: "this is post 3",
+      post_title: "so sad",
+      post_content: "debbie is such a sweet girl!!",
       user_id: 1,
       post_category_id: 2,
     },
     {
-      post_title: "post4",
-      post_content: "this is post 4",
-      user_id: 2,
-      post_category_id: 3,
+      post_title: "huh?",
+      post_content: "who is debby?",
+      user_id: 4,
+      post_category_id: 2,
     },
+    {
+      post_title: "For Debbie",
+      post_content: "Candle light ceremony for debbie at house 2343",
+      user_id: 3,
+      post_category_id: 3,
+    }
   ]).then(() => {
     console.log("********Posts Seeded********");
   });

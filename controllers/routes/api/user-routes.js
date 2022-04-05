@@ -38,10 +38,6 @@ router.get("/:id", (req, res) => {
             model: Post,
             attributes: ["post_title"],
           },
-          //   {
-          //     model: Admin,
-          //     attributes: ["id"],
-          //   },
         ],
       },
     ],
@@ -93,12 +89,12 @@ router.post("/login", (req, res) => {
       return;
     }
 
-    const correctPass = data.checkPassword(req.body.password);
+    // const correctPass = data.checkPassword(req.body.password);
 
-    if (!correctPass) {
-      res.status(400).json({ message: "Incorrect Password" });
-      return;
-    } else {
+    // if (!correctPass) {
+    //   res.status(400).json({ message: "Incorrect Password" });
+    //   return;
+    // } else {
       req.session.save(() => {
         req.session.email = data.email;
         req.session.user_id = data.id;
@@ -106,7 +102,7 @@ router.post("/login", (req, res) => {
         res.status(200).send("Success");
         console.log(req.session);
       });
-    }
+    // }
   });
 });
 

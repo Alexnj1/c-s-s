@@ -24,7 +24,7 @@
 
   <body>
     <header
-      class="d-flex justify-content-between"
+      class="d-flex justify-content-between sticky-top border-bottom border-2 border-dark"
       style="background-color: LightSkyBlue;"
     >
 
@@ -35,9 +35,9 @@
             style="font-size: 20px"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseWidthExample"
+            data-bs-target="#collapseExample"
             aria-expanded="false"
-            aria-controls="collapseWidthExample"
+            aria-controls="collapseExample"
           >
             Menu
           </p>
@@ -65,17 +65,20 @@
     </header>
 
     <div>
-        <div class="collapse collapse-horizontal" id="collapseWidthExample">
-        <div class="card card-body" style="width: 300px; height: 100vh;">
-            <ul class="list-group list-group-flush">
-                <span><a class="text-decoration-none" href="/homepage"><li class="list-group-item my-3 fs-3">Homepage</li> </a></span>
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">About Us</li></a></span>
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Rules</li></a></span>
-                <span><a class="text-decoration-none" href="#"><li class="list-group-item my-3 fs-3">Contact Info</li></a></span>
-            </ul>
-
-            <p style="position: absolute; bottom: 10vh">&copy;2022 C-S-S Neighbourhoods <br> By: Alex, Blerand &amp; Dedrie</p>
+        <div class="collapse" id="collapseExample">
+        <div class="card card-body  " >
+          <div class="d-flex flex-row justify-content-around mb-3">
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage">Homepage</a></span>
+            {{#if loggedIn}}
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage/posts/1">Posts</a></span>
+            {{/if}}
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="#">About Us</a></span>
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="#">Rules</a></span>
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="#">Contact Info</a></span>
+          </div>
+          <p class="text-center mb-0">&copy;2022 C-S-S Neighbourhoods By: Alex, Blerand &amp; Dedrie</p>
         </div>
+        
         </div>
     </div> 
 
