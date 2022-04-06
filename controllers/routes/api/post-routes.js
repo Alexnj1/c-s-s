@@ -9,6 +9,7 @@ const {
 } = require("../../../models/relationships");
 const nodemailer = require("nodemailer"); 
 
+
 //const withAuth = require('../../utilities/auth')
 
 //GET ALL POSTS
@@ -143,6 +144,7 @@ router.put("/:id", (req, res) => {
 //delete a post
 
 
+
 async function emailNotification(postDetails) {
 
   const transporter = nodemailer.createTransport({
@@ -177,6 +179,7 @@ async function emailNotification(postDetails) {
   })
 
 }
+
 
 
 
