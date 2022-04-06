@@ -96,15 +96,15 @@ router.post("/", (req, res) => {
   const postDetails = {
     title: req.body.post_title,
     message: req.body.post_content,
-    from: req.session.email
+    from: req.body.email
   };
 
 
   Post.create({
     post_title: req.body.post_title,
     post_content: req.body.post_content,
-    user_id: req.session.user_id,
-    admin_id: req.session.admin_id,
+    user_id: req.body.user_id,
+    admin_id: req.body.admin_id,
     post_category_id: req.body.post_category_id
   })
     .then((data) => res.json(data))
@@ -139,8 +139,6 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//delete a post
-
 
 
 async function emailNotification(postDetails) {
@@ -157,7 +155,7 @@ async function emailNotification(postDetails) {
 
   let info = await transporter.sendMail({
     from: '"Resident Complaint"' + postDetails.from,
-    to: "ap1@luxury.net",
+    to: '"ADMIN" adriel.kuhn98@ethereal.email',
     subject: postDetails.title,
     text: postDetails.message,
     html: `<b> ${postDetails.message} </b>`,
@@ -177,8 +175,6 @@ async function emailNotification(postDetails) {
   })
 
 }
-
-
 
 
 module.exports = router;
