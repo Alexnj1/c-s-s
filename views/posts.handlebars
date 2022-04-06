@@ -1,0 +1,53 @@
+<body class="image-five image-options">
+
+    <div class="text-center">
+        <h2 class="text-center fw-bold my-4">Neighborhood Posts</h2>
+        <span><a href="/dashboard/add"><button class="btn btn-info mb-3">Add a Post</button></a></span>
+    </div>
+    
+
+    <div class="row">
+
+        <div class="col-8">
+        {{#each allPosts}}
+            <div class="border border-3 border-solid border-dark my-3 mx-4 p-3" style="border-radius:15px ;background-color:lightskyblue">
+                <p>Category: {{this.post_category.category_name}}</p>
+                <p>Posted By: {{this.user.household_username}}{{this.admin.name}}, On: {{format_date this.createdAt}}</p>
+                <p>Title: {{this.post_title}}</p>
+                <p>{{this.post_content}}</p>
+                <p>Comments: {{this.comment_count}}</p>
+                <span><a href="/homepage/post/{{this.id}}"><button class="btn btn-info border border-solid border-2 border-dark">View Post</button></a></span>
+            </div>
+        {{/each}}
+        </div>
+
+        <div class="col-4 border border-3 border-solid border-dark my-3 mx-3 p-3" style="height: 330px ; width:30vw; border-radius:15px ;background-color:lightskyblue; position:sticky; top:10vh;">
+            <div class="d-flex flex-column justify-content-between">
+                <span><a href="/homepage/posts/1"><button type="button" class="btn btn-outline-dark my-3 fw-bold w-100">News 📰</button></a></span>
+                <span><a href="/homepage/posts/2"><button type="button" class="btn btn-outline-dark my-3 fw-bold w-100">Posts from the Community 🏘️</button></a></span>
+                <span><a href="/homepage/posts/3"><button type="button" class="btn btn-outline-dark my-3 fw-bold w-100">Events 🎫</button></a></span>
+                <span><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-dark my-3 fw-bold w-100">Daily Quotes 🎉</button></span>
+            </div>
+        </div>
+        {{!-- <iframe frameBorder="0" width="450" height="200" src="https://kwize.com/quote-of-the-day/embed/&txt=0&font=Arial&color=000000&background=ffffff&fid=knowledge&dy=0"></iframe> --}}
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Quote of the Day</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe frameBorder="0" width="450" height="200" src="https://kwize.com/quote-of-the-day/embed/&txt=0&font=Arial&color=000000&background=ffffff&fid=knowledge&dy=0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</body>

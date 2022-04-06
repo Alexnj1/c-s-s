@@ -24,7 +24,7 @@
 
   <body>
     <header
-      class="d-flex justify-content-between"
+      class="d-flex justify-content-between sticky-top border-bottom border-2 border-dark"
       style="background-color: LightSkyBlue;"
     >
 
@@ -32,12 +32,12 @@
         <p>
           <p
             class="my-2 mx-3 fw-bold"
-            style="font-size: 25px"
+            style="font-size: 20px"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseWidthExample"
+            data-bs-target="#collapseExample"
             aria-expanded="false"
-            aria-controls="collapseWidthExample"
+            aria-controls="collapseExample"
           >
             Menu
           </p>
@@ -46,21 +46,41 @@
       </div>
 
       {{#if loggedIn}}
+      <div class="d-flex">
         <nav class="d-flex justify-content-between mx-4">
-          <p class="my-3 fw-bold" style="font-size: 25px">Logout</p>
+          <span><a href="/dashboard"><p class="my-2 fw-bold btn" style="font-size: 20px">Dashboard</p></a></span>
         </nav>
         <nav class="d-flex justify-content-between mx-4">
-          <p class="my-3 fw-bold" style="font-size: 25px">Dashboard</p>
+          <p class="my-2 fw-bold btn logout" style="font-size: 20px">Logout</p>
         </nav>
+      </div>
       {{else}}
         <nav class="d-flex justify-content-between mx-4">
-          <a class="text-decoration-none text-dark" href="/homepage/login"><p
+          <a class="text-decoration-none text-dark" href="/dashboard/login"><p
               class="my-3 fw-bold"
-              style="font-size: 25px;"
+              style="font-size: 20px;"
             >Login</p></a>
         </nav>
       {{/if}}
     </header>
+
+    <div>
+        <div class="collapse" id="collapseExample">
+        <div class="card card-body  " >
+          <div class="d-flex flex-row justify-content-around mb-3">
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage">Homepage</a></span>
+            {{#if loggedIn}}
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage/posts/1">Posts</a></span>
+            {{/if}}
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage/about">About Us</a></span>
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage/rules">Rules</a></span>
+            <span><a class="text-decoration-none text-dark fw-bold border-bottom border-dark border-2" href="/homepage/contact">Contact Info</a></span>
+          </div>
+          <p class="text-center mb-0">&copy;2022 C-S-S Neighbourhoods By: Alex, Blerand &amp; Dedrie</p>
+        </div>
+        
+        </div>
+    </div> 
 
     <!-- MAIN -->
 
@@ -73,6 +93,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>
 

@@ -28,6 +28,13 @@ Admin.init(
         notContains: '@luxury.com'
       },
     },
+    password: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        len: [5]
+      }
+    }
   },
   {
     sequelize,

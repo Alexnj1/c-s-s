@@ -6,11 +6,11 @@ const {
   Post,
   User,
 } = require("../../../models/relationships");
-// const withAuth = require('../../utilities/auth')
+const withAuth = require('../../../utilities/auth')
 
 //GET ALL COMMENTS
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Comment.findAll({
     attributes: ["id", "comment_content"],
     include: [
@@ -37,12 +37,12 @@ router.get("/", (req, res) => {
 
 // create a comment
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Comment.create({
     comment_content: req.body.comment_content,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     post_id: req.body.post_id,
-    admin_id: req.body.admin_id,
+    admin_id: req.session.admin_id,
   })
     .then((data) => res.json(data))
     .catch((err) => {
