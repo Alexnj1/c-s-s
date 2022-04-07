@@ -1,4 +1,5 @@
 let logoutBtn = document.querySelector(".logout")
+let logoutBtns = document.querySelector(".logout-s")
 
 function logout () {
     fetch("/api/user/logout", {
@@ -15,3 +16,4 @@ function logout () {
 }
 
 logoutBtn.addEventListener('click', logout)
+logoutBtns.addEventListener('click', logout)

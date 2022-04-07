@@ -55,3 +55,52 @@
   backdrop-filter: blur(5px);
   border: solid 2px black;
 }
+
+.quote {
+  height: 30vh;
+  max-height: 200px;
+  width: 80vw;
+  max-width: 450px;
+}
+
+/* CUSTOM MEDIA QUERIES */
+
+/* max */
+
+@media screen and (max-width: 425px) {
+  #logo {
+    max-width: 200px;
+  }
+}
+
+/* min */
+
+@media screen and (min-width: 320px) {
+  .welcome-message {
+    margin: 20px 10vw ;
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    border: solid 2px black;
+  }
+
+  .dash{
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .l-username, .l-password {
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .n-title, .n-post-cat, .n-body {
+    width: 50vw;
+  }
+
+  .dash {
+    width: 50vw
+  }
+}

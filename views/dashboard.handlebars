@@ -2,7 +2,7 @@
 
     
     
-        <div class="text-center col-auto row mb-5 w-50 mx-auto g-3 justify-content-center flex-column welcome-message">
+        <div class="text-center col-auto row mb-5 mx-auto g-3 justify-content-center flex-column dash welcome-message">
             <h2 class="text-center fw-bold">{{userData.household_username}} <br> House Number: {{userData.house_number}} <br><br> Your Dashboard </h2>
             <span class="">
                 <a href="/homepage/posts/2">
@@ -50,9 +50,9 @@
             <div class="modal-body">
                 {{#each userData.posts}}
                 <a class="text-decoration-none text-dark" href="/homepage/post/{{this.id}}"><div class="my-2 border border-dark border-solid border-2 p-2" style="border-radius: 15px; background-color:lightskyblue">
-                Title: {{this.post_title}} <br>
-                Content: {{this.post_content}} <br>
-                Created: {{format_date this.created_at}}
+                <u class="fw-bold">Title:</u>{{this.post_title}} <br>
+                <u class="fw-bold">Content:</u> {{this.post_content}} <br>
+                <u class="fw-bold">Created:</u>  {{format_date this.created_at}}
                 </div></a>
                 {{/each}}
             </div>
