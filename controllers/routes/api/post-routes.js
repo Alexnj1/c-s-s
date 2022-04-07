@@ -7,13 +7,14 @@ const {
   Post,
   User,
 } = require("../../../models/relationships");
+require('dotenv').config()
 const nodemailer = require("nodemailer"); 
 
 
-//const withAuth = require('../../utilities/auth')
+const withAuth = require('../../../utilities/auth')
 
 //GET ALL POSTS
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Post.findAll({
     attributes: [
       "post_title",
@@ -50,7 +51,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", withAuth, (req, res) => {
   Post.findOne({
     where: { id: req.params.id },
     attributes: ["id", "post_title", "post_content", "createdAt", "updatedAt"],
@@ -92,7 +93,7 @@ router.get("/:id", (req, res) => {
 });
 
 //create a post
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   const postDetails = {
     title: req.body.post_title,
     message: req.body.post_content,
@@ -103,8 +104,8 @@ router.post("/", (req, res) => {
   Post.create({
     post_title: req.body.post_title,
     post_content: req.body.post_content,
-    user_id: req.body.user_id,
-    admin_id: req.body.admin_id,
+    user_id: req.body.user_id || req.session.user_id,
+    admin_id: req.body.admin_id || req.session.admin_id,
     post_category_id: req.body.post_category_id
   })
     .then((data) => res.json(data))
@@ -144,11 +145,11 @@ router.put("/:id", (req, res) => {
 async function emailNotification(postDetails) {
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
+    host: process.env.NODEM_HOST,
     port: 587,
     auth: {
-      user: 'adriel.kuhn98@ethereal.email',
-      pass: '5JjQJVmFd2rRSNTJve'
+      user: process.env.NODEM_USER,
+      pass: process.env.NODEM_PW
     }
   });
 
@@ -169,9 +170,6 @@ async function emailNotification(postDetails) {
     } else {
       console.log("success!")
     }
-
-
-
   })
 
 }
