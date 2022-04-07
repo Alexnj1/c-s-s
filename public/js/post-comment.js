@@ -5,7 +5,8 @@ function postComment() {
   const newComment = comment.value.trim();
   const postId = window.location.pathname.toString().slice(-1);
 
-  if (newComment.length > 150) {
+  if (newComment.length) {
+    if (newComment.length > 150) {
     const length = newComment.length;
     alert(`Comments may only be 150 characters (over by ${length - 150}).`);
     return;
@@ -34,6 +35,10 @@ function postComment() {
     .catch((err) => {
       console.log(err);
     });
+  } else {
+    alert('Please enter a comment.')
+  }
+  
 }
 
 commentBtn.addEventListener("click", postComment);

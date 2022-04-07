@@ -13,21 +13,19 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/stylesheet.css" />
 
     <title>CSS Residency</title>
   </head>
 
   <body>
+    {{!-- HEADER --}}
     <header
-      class="d-flex justify-content-between sticky-top border-bottom border-2 border-dark"
+      class="d-none d-md-flex justify-content-between sticky-top border-bottom border-2 border-dark"
       style="background-color: LightSkyBlue;"
     >
-
+      {{!-- regular nav --}}
       <div>
         <p>
           <p
@@ -64,6 +62,37 @@
       {{/if}}
     </header>
 
+     {{!-- small screen nav --}}
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/homepage" style="font-family: 'Lobster', cursive; font-size:25px">C-S-S</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav align-items-end">
+              <a class="nav-link active" aria-current="page" href="/homepage">Homepage</a>
+              {{#if loggedIn}}
+              <a class="nav-link" href="/homepage/posts/1">Posts</a>
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+              <p class="nav-link logout-s mb-0 border-bottom border-solid border-dark border-2">Logout</p>
+              {{else}}
+              <a class="nav-link border-bottom border-solid border-dark border-2" href="/dashboard/login">Login</a>
+              {{/if}}
+              <a class="nav-link" href="/homepage/about">About Us</a>
+              <a class="nav-link" href="/homepage/rules">Rules</a>
+              <a class="nav-link" href="/homepage/contact">Contact Info</a>
+              
+            </div>
+            <p class="text-center mb-0">&copy;2022 C-S-S Neighbourhoods By: Alex, Blerand &amp; Dedrie</p>
+          </div>
+        </div>
+      </nav>
+    {{!-- END HEADER --}}
+
+    {{!-- COLLAPSABLE MENU --}}
+
     <div>
         <div class="collapse" id="collapseExample">
         <div class="card card-body  " >
@@ -81,6 +110,8 @@
         
         </div>
     </div> 
+
+    {{!-- END COLLAPSE --}}
 
     <!-- MAIN -->
 

@@ -1,23 +1,27 @@
-<body class="image-five">
+<body class="image-five image-options">
   <div class="welcome-message">
-    <h2 class="text-center my-3">NEW POST</h2>
+    <h2 class="text-center my-3 fw-bold">NEW POST</h2>
 
-    <input type="text" id="new-title" class="form-control w-50 mx-auto" placeholder="Post Title..." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <input type="text" id="new-title" class="form-control mx-auto n-title" placeholder="Post Title..." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     
     <div class="text-center mt-3">
       <label for="exampleDataList " class="form-label mx-auto">Choose a Category</label>
     </div>
 
-    <input class="form-control w-50 mx-auto" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+    <input class="form-control mx-auto n-post-cat" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
     <datalist id="datalistOptions">
       <option value="1- News">
       <option value="2- Community">
       <option value="3- Events">
     </datalist>    
 
-    <div class="form-floating w-50 my-5 mx-auto">
-      <textarea class="form-control " placeholder="Leave a comment here" id="new-post-body" style="height: 100px"></textarea>
-      <label class="text-muted" for="new-post-body">Post Body...</label>
+    <div class="text-center mb-0 mt-3 d-none d-md-block">
+      <label class="form-label mx-auto" for="new-post-body">Post Body</label>
+    </div>
+    
+    <div class="form-floating my-3 mx-auto">
+      <textarea class="form-control n-body mx-auto" placeholder="Post Body" id="new-post-body" style="height: 100px"></textarea>
+      <label class="text-muted d-md-none mx-auto" for="new-body">Post Body...</label>
     </div>
 
 
