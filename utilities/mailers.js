@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 async function complaintNotification(postDetails) {
   const transporter = nodemailer.createTransport({
     host: process.env.NODEM_HOST,
-    port: 587,
+    port: 25,
     auth: {
       user: process.env.NODEM_USER,
       pass: process.env.NODEM_PW,
@@ -49,6 +49,7 @@ async function complaintNotification(postDetails) {
 async function complimentNotification(postDetails) {
   const transporter = nodemailer.createTransport({
     host: process.env.NODEM_HOST,
+    port:25,
     auth: {
       user: process.env.NODEM_USER,
       pass: process.env.NODEM_PW,
