@@ -19,6 +19,12 @@ async function seedDatabase() {
     {
       category_name: "Events",
     },
+    {
+      category_name: "Complaints",
+    },
+    {
+      category_name: "Compliments"
+    }
   ]).then(() => {
     console.log("********Categories Seeded********");
   });

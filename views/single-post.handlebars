@@ -1,6 +1,7 @@
 <body class="image-five image-options">
     <div class="welcome-message">
         <h2 class="text-center fw-bold">Post from: {{singlePost.user.household_username}}{{singlePost.admin.name}}</h2>
+        <p id="id" class="my-0" style="visibility: hidden;">{{singlePost.id}}</p>
         <h3 class="text-center">In Category: {{singlePost.post_category.category_name}}</h3>
         <br><br>
         <h4 class="text-center">{{singlePost.post_title}}</h4> <br><br>
@@ -12,10 +13,10 @@
         </div>
 
         <div class=" my-5 mx-auto d-md-none" style="width: 70vw;">
-            <input type="text" class="form-control" placeholder="Say something..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text-s" class="form-control" placeholder="Say something..." aria-label="Recipient's username" aria-describedby="basic-addon2">
             <br>
             <div class="text-center">
-              <button name="post" class="btn btn-info">Post</button>  
+              <button name="post-s" class="btn btn-info">Post</button>  
             </div>
         </div>
 

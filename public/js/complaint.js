@@ -1,6 +1,6 @@
-const postBtn = document.querySelector("#submit-compliment");
+const postBtn = document.querySelector("#submit-complaint");
 
-function submitCompliment(event) {
+function submitComplaint(event) {
   event.preventDefault();
 
   const title = document
@@ -11,19 +11,23 @@ function submitCompliment(event) {
     .querySelector("textarea[name='body']")
     .value.toString()
     .trim();
+  const reasons = document
+    .querySelector("input[type='reason']")
+    .value.toString()
+    .trim();
 
-  console.log(title, body);
+  console.log(title, body, reasons);
 
-  if (title && body) {
+  if (title && body && reasons) {
     if (title.length > 255) {
       alert(
-        `Title cannot be more than 255 characters, over by ${
+        `Post title cannot be more than 255 characters, over by ${
           title.length - 255
         }`
       );
     } else if (body.length > 255) {
       alert(
-        `Body cannot be more than 255 characters, over by ${
+        `Post body cannot be more than 255 characters, over by ${
           body.length - 255
         }`
       );
@@ -34,12 +38,13 @@ function submitCompliment(event) {
         body: JSON.stringify({
           post_title: title,
           post_content: body,
-          post_category_id: 5,
+          reason: reasons,
+          post_category_id: 4,
         }),
       })
         .then((response) => {
           if (response.ok) {
-            alert("Your compliment has been submitted. Thank you for showing love for C-S-S!");
+            alert("Your complaint has been submitted!");
             window.location.replace("/dashboard");
           } else {
             console.log(response);
@@ -56,4 +61,4 @@ function submitCompliment(event) {
   }
 }
 
-postBtn.addEventListener("click", submitCompliment);
+postBtn.addEventListener("click", submitComplaint);

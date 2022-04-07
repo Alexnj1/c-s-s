@@ -7,11 +7,10 @@ const {
   Post,
   User,
 } = require("../../../models/relationships");
-require('dotenv').config()
-const nodemailer = require("nodemailer"); 
+const {complaintNotification, complimentNotification} = require('../../../utilities/mailers') 
 
 
-const withAuth = require('../../../utilities/auth')
+const withAuth = require('../../../utilities/auth');
 
 //GET ALL POSTS
 router.get("/", withAuth, (req, res) => {
@@ -97,7 +96,9 @@ router.post("/", withAuth, (req, res) => {
   const postDetails = {
     title: req.body.post_title,
     message: req.body.post_content,
-    from: req.body.email
+    reason: req.body.reason,
+    from: req.session.email,
+    user: req.session.username
   };
 
 
@@ -111,7 +112,8 @@ router.post("/", withAuth, (req, res) => {
     .then((data) => res.json(data))
     .then(() => {
       //emails sent to admins for complaint
-      if (req.body.post_category_id === 2) emailNotification(postDetails)
+      if (req.body.post_category_id == 4) {complaintNotification(postDetails)}
+      else if (req.body.post_category_id == 5){complimentNotification(postDetails)}
     })
     .catch((err) => {
       console.log(err);
@@ -139,40 +141,5 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
-async function emailNotification(postDetails) {
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.NODEM_HOST,
-    port: 587,
-    auth: {
-      user: process.env.NODEM_USER,
-      pass: process.env.NODEM_PW
-    }
-  });
-
-
-  let info = await transporter.sendMail({
-    from: '"Resident Complaint"' + postDetails.from,
-    to: '"ADMIN" adriel.kuhn98@ethereal.email',
-    subject: postDetails.title,
-    text: postDetails.message,
-    html: `<b> ${postDetails.message} </b>`,
-
-  })
-
-  transporter.sendMail(info, function (err, data) {
-
-    if (err) {
-      console.log("error")
-    } else {
-      console.log("success!")
-    }
-  })
-
-}
-
 
 module.exports = router;

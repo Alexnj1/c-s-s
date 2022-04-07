@@ -61,7 +61,7 @@ router.post("/", (req, res) => {
   User.create({
     household_username: req.body.household_username,
     email: req.body.email,
-    house_number: Math.random().toString().slice(4,8),
+    house_number: Math.random().toString().slice(4, 8),
     password: req.body.password,
   })
     .then((data) => {
@@ -90,7 +90,7 @@ router.post("/login", (req, res) => {
     }
 
     const correctPass = data.checkPassword(req.body.password);
-    console.log(correctPass)
+    console.log(correctPass);
 
     if (!correctPass) {
       res.status(400).json({ message: "Incorrect Password" });
@@ -99,6 +99,7 @@ router.post("/login", (req, res) => {
       req.session.save(() => {
         req.session.email = data.email;
         req.session.user_id = data.id;
+        req.session.username = data.household_username;
         req.session.logged_in = true;
         res.status(200).send("Success");
         console.log(req.session);

@@ -52,13 +52,10 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   PostCategory.bulkCreate([
     {
-      category_name: "News",
+      category_name: "Complaints",
     },
     {
-      category_name: "Community",
-    },
-    {
-      category_name: "Events",
+      category_name: "Compliments"
     },
   ])
     .then((data) => {
