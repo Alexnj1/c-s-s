@@ -10,7 +10,7 @@ const {
   models
 } = require("./models/relationships");
 
-{models}
+{ models }
 
 // INITIALIZE EXPRESS
 const app = express();
