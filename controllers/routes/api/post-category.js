@@ -50,9 +50,17 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  PostCategory.create({
-    category_name: req.body.name,
-  })
+  PostCategory.bulkCreate([
+    {
+      category_name: "News",
+    },
+    {
+      category_name: "Community",
+    },
+    {
+      category_name: "Events",
+    },
+  ])
     .then((data) => {
       res.status(200).json(data);
     })
