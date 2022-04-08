@@ -6,7 +6,7 @@
   margin: 20px 100px;
   padding: 20px;
   border-radius: 15px;
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
   border: solid 2px black;
 }
 
@@ -80,7 +80,8 @@
     margin: 20px 10vw ;
     padding: 20px;
     border-radius: 15px;
-    backdrop-filter: blur(12px);
+    /* backdrop-filter: blur(12px); */
+    background-color: rgba(0, 0, 0, 0.8);
     border: solid 2px black;
   }
 
