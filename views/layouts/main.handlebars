@@ -22,8 +22,8 @@
   <body>
     {{!-- HEADER --}}
     <header
-      class="d-none d-md-flex justify-content-between sticky-top border-bottom border-2 border-dark"
-      style="background-color: LightSkyBlue;"
+      class="d-none d-md-flex justify-content-between sticky-top border-bottom border-2 border-dark text-light"
+      style="background-color: rgba(0, 0, 0, 0.8);"
     >
       {{!-- regular nav --}}
       <div>
@@ -46,15 +46,15 @@
       {{#if loggedIn}}
       <div class="d-flex">
         <nav class="d-flex justify-content-between mx-4">
-          <span><a href="/dashboard"><p class="my-2 fw-bold btn" style="font-size: 20px">Dashboard</p></a></span>
+          <span><a href="/dashboard"><p class="my-2 fw-bold btn text-light" style="font-size: 20px">Dashboard</p></a></span>
         </nav>
         <nav class="d-flex justify-content-between mx-4">
-          <p class="my-2 fw-bold btn logout" style="font-size: 20px">Logout</p>
+          <p class="my-2 fw-bold btn text-light logout" style="font-size: 20px">Logout</p>
         </nav>
       </div>
       {{else}}
         <nav class="d-flex justify-content-between mx-4">
-          <a class="text-decoration-none text-dark" href="/dashboard/login"><p
+          <a class="text-decoration-none text-light" href="/dashboard/login"><p
               class="my-3 fw-bold"
               style="font-size: 20px;"
             >Login</p></a>
