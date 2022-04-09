@@ -3,11 +3,11 @@ const nodemailer = require("nodemailer");
 
 async function complaintNotification(postDetails) {
   const transporter = nodemailer.createTransport({
-    host: process.env.NODEM_HOST,
+    host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-      user: process.env.NODEM_USER,
-      pass: process.env.NODEM_PW,
+      user: 'adriel.kuhn98@ethereal.email',
+      pass: '5JjQJVmFd2rRSNTJve',
     },
   });
 
